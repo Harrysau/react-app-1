@@ -1,24 +1,30 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Counter extends Component {
   state = {
     value: this.props.value
   };
   render() {
+    const buttonStyle = {
+      padding: "10px"
+    };
     return (
       <div>
+        {this.props.children}
         <button
           onClick={() => this.decrease()}
           className="btn btn-secondary btn-sm"
         >
-          Decrease
+          -
         </button>
         <span className={this.getBadgesClass()}>{this.formatValue()}</span>
         <button
+          style={buttonStyle}
           onClick={() => this.increase()}
           className="btn btn-secondary btn-sm"
         >
-          Increase
+          +
         </button>
       </div>
     );

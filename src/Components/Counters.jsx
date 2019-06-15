@@ -12,11 +12,19 @@ class Counters extends Component {
     ]
   };
   render() {
+    const divStyle = {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%,-50%)",
+      backgroundColor: "green",
+      padding: "20px"
+    };
     return (
-      <div>
+      <div style={divStyle}>
         {this.state.counters.map(counter => (
           <Counter key={counter.id} value={counter.value}>
-            Title
+            <h4>Counter #{counter.id}</h4>
           </Counter>
         ))}
       </div>
