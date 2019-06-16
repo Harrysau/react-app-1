@@ -9,7 +9,7 @@ class Counter extends Component {
     const divStyle = {
       position: "relative",
       left: "50%",
-      transform: "translate(-50%,0%)",
+      transform: "translateX(-50%)",
       padding: "0 0 20px 0"
     };
     return (
