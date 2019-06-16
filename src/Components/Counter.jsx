@@ -1,57 +1,58 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Counter extends Component {
-  state = {
-    value: this.props.value
-  };
   render() {
     const buttonStyle = {
       padding: "10px"
     };
+    const divStyle = {
+      position: "relative",
+      left: "50%",
+      transform: "translate(-50%,0%)",
+      padding: "0 0 20px 0"
+    };
     return (
       <div>
         {this.props.children}
-        <button
-          onClick={() => this.decrease()}
-          className="btn btn-secondary btn-sm"
-        >
-          -
-        </button>
-        <span className={this.getBadgesClass()}>{this.formatValue()}</span>
-        <button
-          style={buttonStyle}
-          onClick={() => this.increase()}
-          className="btn btn-secondary btn-sm"
-        >
-          +
-        </button>
+        <div style={divStyle}>
+          <button
+            style={buttonStyle}
+            onClick={() => this.props.onDecrease(this.props.counter)}
+            className="btn btn-danger btn-sm"
+          >
+            -
+          </button>
+          <span className={this.getBadgesClass()}>{this.formatValue()}</span>
+          <button
+            style={buttonStyle}
+            onClick={() => this.props.onIncrement(this.props.counter)}
+            className="btn btn-danger btn-sm"
+          >
+            +
+          </button>
+          <div>
+            <button
+              className="btn btn-warning btn-sm m-3"
+              onClick={() => this.props.onDelete(this.props.counter.id)}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 
   formatValue() {
-    return this.state.value === 0 ? "Zero" : this.state.value;
+    return this.props.counter.value === 0 ? "Zero" : this.props.counter.value;
   }
 
   getBadgesClass() {
     let classes = "badge m-3 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
-
-  increase = product => {
-    console.log(product);
-    this.setState({ value: this.state.value + 1 });
-  };
-
-  decrease = product => {
-    if (this.state.value === 0) {
-    } else {
-      console.log(product);
-      this.setState({ value: this.state.value - 1 });
-    }
-  };
 }
 
 export default Counter;
