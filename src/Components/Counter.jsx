@@ -22,7 +22,7 @@ class Counter extends Component {
             onClick={() => this.props.onDecrease(this.props.counter)}
             className="btn btn-danger btn-sm"
           >
-            -
+            <i class="fa fa-minus" aria-hidden="true" />
           </button>
           <span className={this.getBadgesClass()}>{this.formatValue()}</span>
           <button
@@ -30,14 +30,14 @@ class Counter extends Component {
             onClick={() => this.props.onIncrement(this.props.counter)}
             className="btn btn-danger btn-sm"
           >
-            +
+            <i class="fa fa-plus" aria-hidden="true" />
           </button>
           <div>
             <button
               className="btn btn-warning btn-sm m-3"
               onClick={() => this.props.onDelete(this.props.counter.id)}
             >
-              Delete
+              <i class="fa fa-heart" aria-hidden="true" />
             </button>
           </div>
         </div>
